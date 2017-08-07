@@ -3,7 +3,7 @@
 # Recipe:: default
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
-include_recipe "cloudcli"
+include_recipe "cloudcli_aws_credentials"
 
 package 'git'
 package 'docker'
