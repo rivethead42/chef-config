@@ -51,15 +51,8 @@ if node['platform_family'] == "rhel"
     command 'echo "PATH=~/.local/bin:\$PATH" >> /root/.bash_profile && echo "export PATH" >>  /root/.bash_profile'
   end
   
-  execute 'Source .bash_profile' do
-    command 'source ~/.bash_profile'
-  end
-  
-  #ruby_block "update bash_profile" do
-  #  block do
-  #    fe = Chef::Util::FileEdit.new("/root/.bash_profile")
-  #    fe.search_file_replace(/PATH=\$PATH:\$HOME/bin/, "PATH=$PATH:$HOME/bin:~/.local/bin:$PATH")
-  #  end
+  #execute 'Source .bash_profile' do
+  #  command 'source ~/.bash_profile'
   #end
 end
 
