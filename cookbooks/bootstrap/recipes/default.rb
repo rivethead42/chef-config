@@ -6,6 +6,10 @@
 
 include_recipe 'sshd::default'
 
+service 'sshd' do
+  action :stop
+end
+
 package 'git'
 
 if node['platform_family'] == "debian"
@@ -68,3 +72,6 @@ execute 'install web-client' do
   command 'docker pull cloudassessmentscom/web-client'
 end
 
+service 'sshd' do
+  action :start
+end
