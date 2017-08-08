@@ -17,7 +17,7 @@ user 'cloud_user' do
   salt 'linuxacademy'
 end
 
-openssh_server '/etc/sshd_config' do
+openssh_server '/etc/ssh/sshd_config' do
   PasswordAuthentication yes
 end
 
