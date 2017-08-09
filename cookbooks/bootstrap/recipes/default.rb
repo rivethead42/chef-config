@@ -5,7 +5,7 @@
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
 include_recipe 'sshd::default'
-#include_recipe 'cloudcli::default'
+include_recipe 'cloudcli::default'
 
 execute 'echo "stop sshd" >> /root/chef.log' do end
 service 'sshd' do
@@ -45,25 +45,25 @@ if node['platform_family'] == "rhel"
   execute 'echo "python2-pip" >> /root/chef.log' do end
   package 'python2-pip'
 
-  execute 'echo "get pip" >> /root/chef.log' do end
-  execute 'curl-get-pip' do
-    command 'curl -O https://bootstrap.pypa.io/get-pip.py'
-  end
+  #execute 'echo "get pip" >> /root/chef.log' do end
+  #execute 'curl-get-pip' do
+  #  command 'curl -O https://bootstrap.pypa.io/get-pip.py'
+  #end
 
-  execute 'echo "install get-pip" >> /root/chef.log' do end
-  execute 'get-pip' do
-    command 'python get-pip.py --user'
-  end
+  #execute 'echo "install get-pip" >> /root/chef.log' do end
+  #execute 'get-pip' do
+  #  command 'python get-pip.py --user'
+  #end
 
-  execute 'echo "pip install awscli" >> /root/chef.log' do end
-  execute 'awscli' do
-    command 'pip install awscli --upgrade --user'
-  end
+  #execute 'echo "pip install awscli" >> /root/chef.log' do end
+  #execute 'awscli' do
+  #  command 'pip install awscli --upgrade --user'
+  #end
 
-  execute 'echo "update path in .bash_profile" >> /root/chef.log' do end
-  execute 'Update Path' do
-    command 'echo "PATH=~/.local/bin:\$PATH" >> /root/.bash_profile && echo "export PATH" >>  /root/.bash_profile'
-  end
+  #execute 'echo "update path in .bash_profile" >> /root/chef.log' do end
+  #execute 'Update Path' do
+  #  command 'echo "PATH=~/.local/bin:\$PATH" >> /root/.bash_profile && echo "export PATH" >>  /root/.bash_profile'
+  #end
 end
 
 execute 'echo "install photo-filter" >> /root/chef.log' do end
