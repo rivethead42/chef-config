@@ -18,25 +18,43 @@ end
 #end
 #
 #
+if os[:family] == 'debian'
+  describe package('python-pip') do
+   it { should be_installed}
+  end
+
+  describe package('awscli') do
+   it { should be_installed}
+  end
+end
+
 if os[:family] == 'redhat'
 
  describe package('git') do
-  it { should be_installed }	
+  it { should be_installed }
  end
 
  describe package('python-pip') do
   it { should be_installed}
  end
- 
+
  describe package('docker') do
   it { should be_installed }
- end 
-
- describe service('docker') do
-  it {should be_running }
  end
 
+ describe service('docker') do
+  it { should be_running }
+ end
 
+ describe docker_image('cloudassessmentscom/photo-filter:latest') do
+  it { should exist }
+ end
 
+ describe docker_image('cloudassessmentscom/photo-storage:latest') do
+  it { should exist }
+ end
 
+ describe docker_image('cloudassessmentscom/web-client:latest') do
+  it { should exist }
+ end
 end

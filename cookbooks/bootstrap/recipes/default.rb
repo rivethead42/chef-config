@@ -5,6 +5,7 @@
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
 include_recipe 'sshd::default'
+include_recipe 'cloudcli::default'
 
 service 'sshd' do
   action :stop
@@ -32,29 +33,29 @@ end
 
 if node['platform_family'] == "rhel"
   package 'docker'
-  
+
   service 'docker' do
     action :start
   end
 
   package 'python2-pip'
-  	
+
   execute 'curl-get-pip' do
     command 'curl -O https://bootstrap.pypa.io/get-pip.py'
   end
-	
-  execute 'get-pip' do
-    command 'python get-pip.py --user'
-  end
 
-  execute 'awscli' do
-    command 'pip install awscli --upgrade --user'
-  end
+  #execute 'get-pip' do
+  #  command 'python get-pip.py --user'
+  #end
 
-  execute 'Update Path' do
-    command 'echo "PATH=~/.local/bin:\$PATH" >> /root/.bash_profile && echo "export PATH" >>  /root/.bash_profile'
-  end
-  
+  #execute 'awscli' do
+  #  command 'pip install awscli --upgrade --user'
+  #end
+
+  #execute 'Update Path' do
+  #  command 'echo "PATH=~/.local/bin:\$PATH" >> /root/.bash_profile && echo "export PATH" >>  /root/.bash_profile'
+  #end
+
   #execute 'Source .bash_profile' do
   #  command 'source ~/.bash_profile'
   #end
