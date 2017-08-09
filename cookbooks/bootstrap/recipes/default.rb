@@ -64,10 +64,6 @@ if node['platform_family'] == "rhel"
   execute 'Update Path' do
     command 'echo "PATH=~/.local/bin:\$PATH" >> /root/.bash_profile && echo "export PATH" >>  /root/.bash_profile'
   end
-
-  execute 'Source .bash_profile' do
-    command 'source ~/.bash_profile'
-  end
 end
 
 execute 'echo "install photo-filter" >> /root/chef.log' do end
